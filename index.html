@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Growler</title>
+		
+		<script type="text/javascript" src="js/mootools.js"></script>
+		<script type="text/javascript" src="growler.js"></script>
+		<script type="text/javascript">
+			window.addEvent('domready', function() {
+				var Growl = new Growler();
+				Growl.trigger('clickable', 'click', 'My id is #clickable, and I just got clicked by you!');
+				Growl.trigger(window, 'growlin', 'I am a window, and I just fired my own event!');
+				
+				(function() {
+					window.fireEvent('growlin');
+				}).delay(1000);
+			});
+		</script>
+	</head>
+	<body style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;">
+		<div id="wrapper">
+			<p align="left"><a href="#" id="clickable">click here</a></p>
+		</div>
+	</body>
+</html>
