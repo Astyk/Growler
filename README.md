@@ -1,4 +1,6 @@
-#Growler.js
+#Growler
+
+A simple, event-based, Growl-style notification system for mooTools.
 
 ##License
 Copyright (c) 2010 Stephane P. Pericat
@@ -20,10 +22,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-##Description
-
-Growler.js, a simple, event-based, Growl-style notification system for mooTools.
 
 ##How to Use
 
