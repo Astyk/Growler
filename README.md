@@ -3,7 +3,10 @@
 A simple, event-based, Growl-style notification system for mooTools.
 
 ##License
-Copyright (c) 2010 Stephane P. Pericat
+
+The MIT-License
+
+Copyright (c) 2010-2011 Stephane P. Pericat
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +28,36 @@ THE SOFTWARE.
 
 ##How to Use
 
+- To instantiate the growler :
+
 	window.addEvent('domready', function() {
 		var growl = new Growler();
-		growl.trigger('myElementId', 'myevent', 'my message');
+	});
+	
+- To listen to an event:
+
+	window.addEvent('domready', function() {
+		var growl = new Growler();
+		growl.listen(window, 'domready', 'the DOM is ready!');
+	});
+	
+- To simply throw a notification (for example during an ajax request) :
+
+	window.addEvent('domready', function() {
+		var growl = new Growler();
+		
+		new Request({
+			url: 'some-file.php',
+			onRequest: function() {
+				growl.notify('Request sent!');
+			},
+			onComplete: function(response) {
+				growl.notify(response);
+			}
+		}).send();
 	});
 	
 ##TODO
 
-- Implement side visual
+- implement side visual
+- make full html5 version

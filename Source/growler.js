@@ -41,18 +41,18 @@ var Growler = new Class({
 		$(document.body).grab(this.container);
 	},
 
-	trigger: function(el, evt, msg) {
+	listen: function(el, evt, msg) {
 		if($(el)) {
 			$(el).addEvent(evt, function() {
 				if(msg)
-					this.show(msg);
+					this.notify(msg);
 			}.bind(this));
 		} else {
 			throw 'invalid element id';
 		}
 	},
 	
-	show: function(msg) {
+	notify: function(msg) {
 		var growlWindow = new Element('div', {
 			styles: {
 				background: 'url('+this.options.background+')',

@@ -10,9 +10,27 @@
 		<script type="text/javascript">
 			window.addEvent('domready', function() {
 				var Growl = new Growler();
-				Growl.trigger('clickable', 'click', 'My id is #clickable, and I just got clicked by you!');
-				Growl.trigger(window, 'growlin', 'I am a window, and I just fired my own event!');
 				
+				//Listen to events using Growler.listen(): 
+				//click event
+				Growl.listen('clickable', 'click', 'My id is #clickable, and I just got clicked by you!');
+				//window event
+				Growl.listen(window, 'growlin', 'I am a window, and I just fired my own event!');
+
+				//Notify on Request using Growler.notify():
+				new Request.JSON({
+					url: 'time.php',
+					method: 'get',
+					onRequest: function() {
+						Growl.notify('The Request is sent');
+					}.bind(this),
+					onComplete: function(res) {
+						Growl.notify('Request completed, current time is : '+res);
+					}
+				}).send();
+				
+				
+				/* growlin event triggered */
 				(function() {
 					window.fireEvent('growlin');
 				}).delay(1000);
