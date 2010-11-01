@@ -28,20 +28,20 @@ THE SOFTWARE.
 
 ##How to Use
 
-- To instantiate the growler :
+1: To instantiate the growler :
 
 	window.addEvent('domready', function() {
 		var growl = new Growler();
 	});
 	
-- To listen to an event:
+2: To listen to an event:
 
 	window.addEvent('domready', function() {
 		var growl = new Growler();
 		growl.listen(window, 'domready', 'the DOM is ready!');
 	});
 	
-- To simply throw a notification (for example during an ajax request) :
+3: To simply throw a notification (for example during an ajax request) :
 
 	window.addEvent('domready', function() {
 		var growl = new Growler();
