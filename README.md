@@ -1,6 +1,7 @@
 #Growler
 
 A simple, event-based, Growl-style notification system for mooTools.
+Growler is compatible with MooTools Core 1.2.5 and 1.3 .
 
 ##License
 
@@ -31,20 +32,20 @@ THE SOFTWARE.
 1: To instantiate the growler :
 
 	window.addEvent('domready', function() {
-		var growl = new Growler();
+		var growl = new Growler.Classic();
 	});
 	
 2: To listen to an event:
 
 	window.addEvent('domready', function() {
-		var growl = new Growler();
+		var growl = new Growler.Classic();
 		growl.listen(window, 'domready', 'the DOM is ready!');
 	});
 	
 3: To simply throw a notification (for example during an ajax request) :
 
 	window.addEvent('domready', function() {
-		var growl = new Growler();
+		var growl = new Growler.Classic();
 		
 		new Request({
 			url: 'some-file.php',

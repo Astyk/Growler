@@ -5,12 +5,12 @@
 		
 		<title>Growler</title>
 		
-		<script type="text/javascript" src="js/mootools.js"></script>
+		<!--<script type="text/javascript" src="js/mootools-core-1.2.4.js"></script>-->
+		<script type="text/javascript" src="js/mootools-core-1.3.js"></script>
 		<script type="text/javascript" src="Source/growler.js"></script>
 		<script type="text/javascript">
 			window.addEvent('domready', function() {
-				var Growl = new Growler();
-				
+				var Growl = new Growler.Classic();
 				//Listen to events using Growler.listen(): 
 				//click event
 				Growl.listen('clickable', 'click', 'My id is #clickable, and I just got clicked by you!');
@@ -29,8 +29,7 @@
 					}
 				}).send();
 				
-				
-				/* growlin event triggered */
+				//"growlin" event triggered
 				(function() {
 					window.fireEvent('growlin');
 				}).delay(1000);

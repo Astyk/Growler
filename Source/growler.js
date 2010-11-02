@@ -16,7 +16,18 @@ provides : Growler
 ...
 */
 
-var Growler = new Class({
+var Growler = {
+	author: "Stephane P. Pericat",
+	license: "MIT",
+	version: '0.2.2'
+}
+
+/* 
+ * Growler.Classic uses a png/gif file as background image, thus making size + style quite static
+ * Compatibility: IE 7 / 8, Safari 5, Firefox 3.*, Chrome 
+ */
+
+Growler.Classic = new Class({
 	Implements: [Options, Events],
 	options: {
 		background: 'growl.png',
@@ -78,5 +89,19 @@ var Growler = new Class({
 				growlWindow.dispose();
 			}).delay(500);
 		}).delay(this.options.timeOut);
+	}
+});
+
+/* 
+ * Growler.Modern is a fully customizable html5 / css3 implementation of Growl.
+ * Compatibility: Safari 5, Firefox 3.*, Chrome 
+ */
+
+Growler.Modern = new Class({
+	Implements: [Options, Events],
+	options: {},
+	
+	initialize: function() {
+		
 	}
 });
