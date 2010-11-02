@@ -19,7 +19,7 @@ provides : Growler
 var Growler = {
 	author: "Stephane P. Pericat",
 	license: "MIT",
-	version: '0.2.2'
+	version: '0.3'
 }
 
 /* 
@@ -99,9 +99,67 @@ Growler.Classic = new Class({
 
 Growler.Modern = new Class({
 	Implements: [Options, Events],
-	options: {},
+	options: {
+		styles: {
+			background: 'rgba(0, 0, 0, 0.7)',
+			height: 73,
+			width: 298,
+			position: 'relative',
+			top: 10,
+			right: 10,
+			borderRadius: '1em',
+			MozBorderRadius: '1em',
+			padding: '10px',
+			marginBottom: '10px',
+			color: '#fafafa',
+			fontFamily: 'Helvetica, Arial, sans-serif',
+			fontSize: '12px',
+			opacity: 0,
+			WebkitBoxShadow: '2px 2px 12px #777777',
+			MozBoxShadow: '2px 2px 12px #777777' 
+		},
+		timeOut: 2000,
+	},
+	container: null,
 	
-	initialize: function() {
-		
+	initialize: function(options) {
+		if(options)
+			this.setOptions(options);
+			
+		this.container = new Element('div', {
+			styles: {
+				width: this.options.width,
+				position: 'fixed',
+				top: 0,
+				right: 0
+			}
+		});
+		$(document.body).grab(this.container);
+	},
+	
+	listen: function(el, evt, msg) {
+		if($(el)) {
+			$(el).addEvent(evt, function() {
+				if(msg)
+					this.notify(msg);
+			}.bind(this));
+		} else {
+			throw 'invalid element id';
+		}
+	},
+	
+	notify: function(msg) {
+		var growlWindow = new Element('div', {
+			styles: this.options.styles
+		});
+		growlWindow.set('text', msg);
+		this.container.grab(growlWindow);
+		growlWindow.morph({opacity: 1});
+		(function() {
+			growlWindow.morph({opacity: 0});
+			(function() {
+				growlWindow.dispose();
+			}).delay(500);
+		}).delay(this.options.timeOut);
 	}
 });

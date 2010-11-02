@@ -10,7 +10,8 @@
 		<script type="text/javascript" src="Source/growler.js"></script>
 		<script type="text/javascript">
 			window.addEvent('domready', function() {
-				var Growl = new Growler.Classic();
+				//we determine which one to use, based on your browser
+				(!typeof(Browser.ie) == 'undefined') ? Growl = new Growler.Classic() : Growl = new Growler.Modern();
 				//Listen to events using Growler.listen(): 
 				//click event
 				Growl.listen('clickable', 'click', 'My id is #clickable, and I just got clicked by you!');

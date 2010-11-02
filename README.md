@@ -32,33 +32,25 @@ THE SOFTWARE.
 1: To instantiate the growler :
 
 	window.addEvent('domready', function() {
-		var growl = new Growler.Classic();
+		(!typeof(Browser.ie) == 'undefined') ? Growl = new Growler.Classic() : Growl = new Growler.Modern();
 	});
 	
 2: To listen to an event:
 
-	window.addEvent('domready', function() {
-		var growl = new Growler.Classic();
-		growl.listen(window, 'domready', 'the DOM is ready!');
-	});
+	Growl.listen(window, 'domready', 'the DOM is ready!');
 	
 3: To simply throw a notification (for example during an ajax request) :
 
-	window.addEvent('domready', function() {
-		var growl = new Growler.Classic();
-		
-		new Request({
-			url: 'some-file.php',
-			onRequest: function() {
-				growl.notify('Request sent!');
-			},
-			onComplete: function(response) {
-				growl.notify(response);
-			}
-		}).send();
-	});
+	new Request({
+		url: 'some-file.php',
+		onRequest: function() {
+			Growl.notify('Request sent!');
+		},
+		onComplete: function(response) {
+			Growl.notify(response);
+		}
+	}).send();
 	
 ##TODO
 
 - implement side visual
-- make full html5 version
