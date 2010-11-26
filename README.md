@@ -3,6 +3,10 @@
 A simple, event-based, Growl-style notification system for mooTools.
 Growler is compatible with MooTools Core 1.3.
 
+##Version
+
+The current stable version is : 1.0.
+
 ##License
 
 The MIT-License
