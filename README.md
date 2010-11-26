@@ -1,7 +1,7 @@
 #Growler
 
 A simple, event-based, Growl-style notification system for mooTools.
-Growler is compatible with MooTools Core 1.2.5 and 1.3 .
+Growler is compatible with MooTools Core 1.3.
 
 ##License
 
@@ -32,7 +32,7 @@ THE SOFTWARE.
 1: To instantiate the growler :
 
 	window.addEvent('domready', function() {
-		(!typeof(Browser.ie) == 'undefined') ? Growl = new Growler.Classic() : Growl = new Growler.Modern();
+		var Growl = Growler.init();
 	});
 	
 2: To listen to an event:
